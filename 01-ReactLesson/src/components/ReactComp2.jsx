@@ -3,19 +3,33 @@ import rightArrow from "../assets/next.png";
 import leftArrow from "../assets/back.png";
 
 function ReactComp2() {
-  const [leftBasket, setLeftBasket] = useState(0);
-  const [rightBasket, setRightBasket] = useState(10);
+  const totalAppleCount = 10;
+
+  const [leftBasket, setLeftBasket] = useState(totalAppleCount);
+  const [rightBasket, setRightBasket] = useState(0);
 
   const leftPushHandle = () => {
-    console.log("left btn click");
-    setLeftBasket(() => leftBasket + 1);
-    setRightBasket(() => rightBasket - 1);
+    if (leftBasket === totalAppleCount) {
+      setLeftBasket(10);
+      setRightBasket(0);
+      console.log("dsds");
+    } else {
+      console.log("left btn click");
+      setLeftBasket(() => leftBasket + 1);
+      setRightBasket(() => rightBasket - 1);
+    }
   };
 
   const rightPushHandle = () => {
-    console.log("right btn click");
-    setLeftBasket(() => leftBasket - 1);
-    setRightBasket(() => rightBasket + 1);
+    if (rightBasket === totalAppleCount) {
+      setLeftBasket(0);
+      setRightBasket(10);
+      console.log("dsds");
+    } else {
+      console.log("right btn click");
+      setLeftBasket(() => leftBasket - 1);
+      setRightBasket(() => rightBasket + 1);
+    }
   };
 
   return (

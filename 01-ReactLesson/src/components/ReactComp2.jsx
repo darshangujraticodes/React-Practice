@@ -43,7 +43,16 @@ function ReactComp2() {
             <div className="col-md-3">
               <div className="content-wrap">
                 <h2>Basket 1</h2>
-                <h3>Apple Count = {leftBasket} </h3>
+                <h3>
+                  Apple Count = {leftBasket}
+                  {leftBasket === 0 ? (
+                    <p>(Basket is Empty)</p>
+                  ) : leftBasket === 10 ? (
+                    <p>(Basket is Full)</p>
+                  ) : (
+                    <p></p>
+                  )}
+                </h3>
               </div>
             </div>
             <div className="col-md-3">
@@ -73,7 +82,16 @@ function ReactComp2() {
             <div className="col-md-3">
               <div className="content-wrap ">
                 <h2>Basket 2</h2>
-                <h3>Apple Count = {rightBasket} </h3>
+                <h3>
+                  Apple Count = {rightBasket}
+                  {rightBasket === 0 ? (
+                    <p> (Basket is Empty) </p>
+                  ) : rightBasket === 10 ? (
+                    <p> (Basket is Full) </p>
+                  ) : (
+                    <p> </p>
+                  )}
+                </h3>
               </div>
             </div>
           </div>

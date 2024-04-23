@@ -8,16 +8,36 @@ function HeaderSection() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <NavLink to="/" className={({ isActive }) => `    `}>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  ` ${isActive ? " activeLink " : "linkTag  "} `
+                }
+              >
                 Home
               </NavLink>
-              <NavLink to="/about" className="m-5">
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  ` ${isActive ? " activeLink " : "linkTag  "} `
+                }
+              >
                 About Us
               </NavLink>
-              <NavLink to="/product" className="m-5">
+              <NavLink
+                to="/product"
+                className={({ isActive }) =>
+                  ` ${isActive ? " activeLink " : "linkTag  "} `
+                }
+              >
                 Product
               </NavLink>
-              <NavLink to="/contact" className="m-5">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  ` ${isActive ? " activeLink " : "linkTag  "} `
+                }
+              >
                 Contact Us
               </NavLink>
             </div>

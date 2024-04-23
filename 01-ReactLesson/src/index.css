@@ -16,3 +16,17 @@
   width: 80px;
   height: auto;
 }
+
+.linkTag {
+  text-decoration: none;
+  color: #262626;
+  padding: 10px;
+}
+
+.activeLink {
+  text-decoration: none;
+  color: #fff;
+  background-color: #545ffc;
+  padding: 8px 15px;
+  border-radius: 8px;
+}

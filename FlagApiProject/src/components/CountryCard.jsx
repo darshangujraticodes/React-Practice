@@ -1,23 +1,32 @@
 import React from "react";
 import indiaFlag from "../assets/indiaflag.svg";
 
-function CountryCard() {
+function CountryCard({
+  countryFlagImg,
+  countryName,
+  countryCapital,
+  countryPopulation,
+  countryRegion,
+}) {
   return (
     <>
       <div className="country-card">
         <div className="flag-img-wrap">
-          <img src={indiaFlag} alt="" />
+          <img src={countryFlagImg} alt={countryName} />
         </div>
-        <div class="card-text">
-          <h3 class="card-title">India</h3>
+        <div className="card-text">
+          <h3 className="card-title">{countryName}</h3>
           <p>
-            <b>Population: </b>1,38,00,04,385
+            <b>Population: </b>
+            {countryPopulation}
           </p>
           <p>
-            <b>Region: </b>Asia
+            <b>Region: </b>
+            {countryRegion}
           </p>
           <p>
-            <b>Capital: </b>New Delhi
+            <b>Capital: </b>
+            {countryCapital}
           </p>
         </div>
       </div>

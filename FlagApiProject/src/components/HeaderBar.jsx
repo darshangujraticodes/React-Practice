@@ -5,13 +5,13 @@ import RegionSelector from "./RegionSelector";
 function HeaderBar() {
   return (
     <>
-      <header class="header-container">
-        <div class="header-content">
-          <h2 class="title">
+      <header className="header-container">
+        <div className="header-content">
+          <h2 className="title">
             <a href="#">Find your Country Flag ?</a>
           </h2>
-          <p class="theme-changer">
-            <i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Dark Mode
+          <p className="theme-changer">
+            <i className="fa-regular fa-moon"></i>&nbsp;&nbsp;Dark Mode
           </p>
         </div>
       </header>

@@ -53,7 +53,7 @@ a {
 .countries-container {
   max-width: 1200px;
   margin-top: 16px;
-  display: flex;
+  /* display: flex; */
   gap: 64px;
   flex-wrap: wrap;
   margin-inline: auto;
@@ -61,6 +61,7 @@ a {
 }
 
 .country-card {
+  margin: 15px 0;
   display: inline-block;
   width: 250px;
   border-radius: 8px;
@@ -79,6 +80,11 @@ a {
 .card-title {
   font-size: 24px;
   margin-block: 16px;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
 }
 
 .card-text {

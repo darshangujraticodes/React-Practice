@@ -1,5 +1,4 @@
 import React from "react";
-import indiaFlag from "../assets/indiaflag.svg";
 
 function CountryCard({
   countryFlagImg,
@@ -12,13 +11,13 @@ function CountryCard({
     <>
       <div className="country-card">
         <div className="flag-img-wrap">
-          <img src={countryFlagImg} alt={countryName} />
+          <img src={countryFlagImg} alt={`${countryName + " Flag"}`} />
         </div>
         <div className="card-text">
           <h3 className="card-title">{countryName}</h3>
           <p>
             <b>Population: </b>
-            {countryPopulation}
+            {countryPopulation.toLocaleString("en-IN")}
           </p>
           <p>
             <b>Region: </b>

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 
-function FlagDisplay() {
+function FlagDisplay({ searchQuery }) {
   const URL_LINK = "https://restcountries.com/v3.1/all";
   const [flagData, setFlagData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  let filterData = flagData.filter((val) =>
+    val.name.common.toLowerCase().includes(searchQuery)
+  );
 
   useEffect(() => {
     const fetchCountryData = async () => {
@@ -28,13 +32,18 @@ function FlagDisplay() {
     console.log("API Error =", error);
   }, []);
 
+  console.log("flag search query data ", searchQuery);
+
   return (
     <>
       <div className="display-country-card">
         <div className="container">
           <div className="row">
-            {flagData.map((val) => (
-              <div key={val.name.common} className="col-md-3 justify-center">
+            {filterData.map((val) => (
+              <div
+                key={val.name.common}
+                className="col-md-3 col-6 justify-center"
+              >
                 <CountryCard
                   countryFlagImg={val.flags.svg}
                   countryName={val.name.common}
@@ -44,6 +53,7 @@ function FlagDisplay() {
                 />
               </div>
             ))}
+            {}
           </div>
         </div>
       </div>

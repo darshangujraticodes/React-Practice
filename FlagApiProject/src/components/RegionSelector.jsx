@@ -1,10 +1,13 @@
 import React from "react";
 
-function RegionSelector() {
+function RegionSelector({ setRegionQuery }) {
   return (
     <>
-      <select className="filter-by-region">
-        <option hidden="">Filter by Region</option>
+      <select
+        className="filter-by-region"
+        onSelect={(e) => setRegionQuery((e) => setRegionQuery(e.target.value))}
+      >
+        <option hidden>Filter by Region</option>
         <option value="Africa">Africa</option>
         <option value="America">America</option>
         <option value="Asia">Asia</option>

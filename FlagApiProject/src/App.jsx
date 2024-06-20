@@ -9,6 +9,9 @@ import FlagDisplay from "./components/FlagDisplay";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [regionQuery, setRegionQuery] = useState("");
+
+  console.log(regionQuery, searchQuery);
 
   return (
     <>
@@ -16,10 +19,10 @@ function App() {
       <main>
         <div className="search-filter-container">
           <SearchBar setSearchQuery={setSearchQuery} />
-          <RegionSelector />
+          <RegionSelector setRegionQuery={setRegionQuery} />
         </div>
         <div className="countries-container">
-          <FlagDisplay searchQuery={searchQuery} />
+          <FlagDisplay searchQuery={searchQuery} regionQuery={regionQuery} />
         </div>
       </main>
     </>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 
-function FlagDisplay({ searchQuery }) {
+function FlagDisplay({ searchQuery, regionQuery }) {
   const URL_LINK = "https://restcountries.com/v3.1/all";
   const [flagData, setFlagData] = useState([]);
   const [error, setError] = useState(null);
@@ -33,6 +33,7 @@ function FlagDisplay({ searchQuery }) {
   }, []);
 
   console.log("flag search query data ", searchQuery);
+  console.log("flag region query data ", regionQuery);
 
   return (
     <>

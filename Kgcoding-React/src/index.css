@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  background: #262626;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}

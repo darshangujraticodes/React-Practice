@@ -1,3 +1,4 @@
+import BgColorChange from "./components/BgColorChange";
 import Header from "./components/Header";
 import HeroContent from "./components/HeroContent";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <Header />
       <HeroContent />
+      <BgColorChange />
     </>
   );
 }

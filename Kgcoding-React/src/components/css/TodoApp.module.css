@@ -1,0 +1,28 @@
+.todoWrapper {
+  background-color: #262626;
+  color: #fff;
+  padding: 30px 50px;
+  width: 50%;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.listBtn {
+  background: none;
+  border: none;
+}
+
+.listWrap {
+  background-color: #f5f5f5;
+  color: #262626;
+  display: flex;
+  border-radius: 10px;
+  padding: 8px 12px;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  width: 20px; /*Desired width*/
+  height: 20px; /*Desired height*/
+}

@@ -1,6 +1,8 @@
 import React from "react";
 
 function RegionSelector({ setRegionQuery }) {
+  handleRegionClick = () => {};
+
   return (
     <>
       <select

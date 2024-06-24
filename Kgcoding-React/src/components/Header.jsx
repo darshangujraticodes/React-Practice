@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./css/Header.module.css";
 import logo from "../assets/react.svg";
+import { Link, NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -13,29 +14,60 @@ function Header() {
           <div className="navMenu">
             <ul className="d-flex">
               <li className="px-3">
-                <a href="" className={styles.navText}>
+                <NavLink
+                  to=""
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? `${styles.activeNavlink}`
+                        : `${styles.navText} `
+                    } `
+                  }
+                >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="px-3">
-                <a href="" className={styles.navText}>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? `${styles.activeNavlink}`
+                        : `${styles.navText} `
+                    } `
+                  }
+                >
                   Aboutus
-                </a>
+                </NavLink>
               </li>
               <li className="px-3">
-                <a href="" className={styles.navText}>
+                <NavLink
+                  to="/service"
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? `${styles.activeNavlink}`
+                        : `${styles.navText} `
+                    } `
+                  }
+                >
                   Service
-                </a>
+                </NavLink>
               </li>
               <li className="px-3">
-                <a href="" className={styles.navText}>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? `${styles.activeNavlink}`
+                        : `${styles.navText} `
+                    } `
+                  }
+                >
                   Contact
-                </a>
-              </li>
-              <li className="px-3">
-                <a href="" className={styles.navText}>
-                  Portfolio
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

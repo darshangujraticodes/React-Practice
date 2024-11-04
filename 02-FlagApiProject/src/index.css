@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-text-color: #262626;
+  --primary-bg-color: #fff;
+
+  --head-box-shadow: rgba(38, 38, 38, 0.5);
+}
+
+[data-theme="dark"] {
+  --primary-text-color: #fff;
+  --primary-bg-color: #262626;
+
+  --head-box-shadow: rgba(255, 255, 255, 0.4);
+}
+
+.containerWrap {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.moonIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-3 {
+  width: 25%;
+  padding: 10px;
+}
+
+.flagImg {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  /* margin: 10px 0; */
+  /* object-fit: cover; */
+}
+
+/* .flagImgWrap {
+  width: 400px;
+  height: auto;
+} */
+
+.headerWrapper {
+  background: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  box-shadow: 3px 4px 10px var(--head-box-shadow);
+}
+
+.FlagDisplayWrapper {
+  background: var(--primary-bg-color);
+  color: var(--primary-text-color);
+}
+
+.flagCardWrap {
+  border-radius: 20px;
+  border: 2px solid var(--primary-text-color);
+  overflow: hidden;
+}
+
+.flagImgWrap {
+  border-bottom: 2px solid var(--primary-text-color);
+}

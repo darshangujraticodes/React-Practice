@@ -22,9 +22,14 @@
   margin: 0 auto;
 }
 
-.moonIcon {
-  width: 30px;
-  height: 30px;
+.headIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.homeIcon {
+  width: 20px;
+  height: 20px;
 }
 
 .row {

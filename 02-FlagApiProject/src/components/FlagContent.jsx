@@ -1,29 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FlagCard from "./FlagCard";
+import { ThemeContext } from "../context/ThemeContext";
 
 function FlagContent() {
-  const flagAPI = "https://restcountries.com/v3.1/all";
-
-  const [flagData, setFlagData] = useState();
-  const [apiError, setApiError] = useState(false);
-
-  useEffect(() => {
-    const fetchFlagData = async () => {
-      try {
-        const response = await fetch(flagAPI);
-        const data = await response.json();
-
-        setFlagData(data);
-      } catch (error) {
-        setApiError(true);
-        console.log(error);
-      }
-    };
-
-    fetchFlagData();
-    console.log("API Fetch Error = ", apiError);
-    console.log("api flagdata", flagData);
-  }, []);
+  const { flagData } = useContext(ThemeContext);
 
   return (
     <>

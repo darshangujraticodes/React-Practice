@@ -7,9 +7,14 @@ function FlagCard({
   countryPopulation,
   countryCapital,
   countryRegion,
-  countryLink,
+
+  countryBorder,
 }) {
   const linkDisplay = countryName.replaceAll(" ", "-");
+
+  const borderCountry = countryBorder;
+
+  // console.log("borderCoutnry = ", countryName, borderCountry);
 
   // console.log(linkDisplay);
 
@@ -29,6 +34,9 @@ function FlagCard({
           </p>
           <p className="mt-1">
             Capital : <span>{countryCapital}</span>{" "}
+          </p>
+          <p className="mt-1">
+            Border Nations : <span>{countryBorder}</span>{" "}
           </p>
         </div>
       </div>

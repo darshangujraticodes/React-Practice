@@ -23,6 +23,7 @@ function FlagContent() {
                     countryPopulation={item.population}
                     countryRegion={item.region}
                     countryCapital={item.capital}
+                    countryBorder={item.borders}
                   />
                 </div>
               ))

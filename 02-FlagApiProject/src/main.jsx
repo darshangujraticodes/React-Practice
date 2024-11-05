@@ -12,6 +12,7 @@ import {
 import PageLayout from "./components/PageLayout.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import CountryInfo from "./pages/CountryInfo.jsx";
+import ExpenseTracker from "./pages/ExpenseTracker.jsx";
 // import FlagContextProvider from "./context/FlagContextProvider.jsx";
 
 const router = createBrowserRouter(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<PageLayout />}>
       <Route path="" element={<HomePage />} />
       <Route path="/country/:countryName" element={<CountryInfo />} />
+      <Route path="/expense-tracker" element={<ExpenseTracker />} />
     </Route>
   )
 );

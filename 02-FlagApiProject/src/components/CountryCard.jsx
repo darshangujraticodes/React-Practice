@@ -13,10 +13,39 @@ function CountryCard({
   countryContinent,
   countryMapLink,
   countryIcon,
+  countryBorderNation,
 }) {
+  const { flagData } = useContext(ThemeContext);
+
   const languageValues = Object.values(countryLanguage);
 
-  console.log(languageValues, typeof languageValues);
+  // console.log(languageValues, typeof languageValues);
+
+  // console.log(countryBorderNation);
+  let borderNation = [];
+  const flagDataCopy = flagData;
+
+  if (countryBorderNation) {
+    for (let k of countryBorderNation) {
+      // console.log(k, typeof k);
+      let filterNation = flagDataCopy.filter((item) => {
+        if (item.cca3 == k) {
+          borderNation.push(item.name.common);
+        }
+
+        return 0;
+      });
+      console.log("border nation = ", k, filterNation);
+    }
+  }
+
+  console.log("borderNation list = ", borderNation);
+
+  let nationList = "";
+
+  for (let k of borderNation) {
+    nationList = nationList + k + ", ";
+  }
 
   let languageStringVal = "";
 
@@ -24,7 +53,7 @@ function CountryCard({
     languageStringVal = languageStringVal + k + ", ";
   }
 
-  console.log("k values = ", languageStringVal);
+  // console.log("k values = ", languageStringVal);
 
   return (
     <div>
@@ -64,6 +93,12 @@ function CountryCard({
             <p className="mt-2">
               Continents : <span>{countryContinent}</span>
             </p>
+
+            {countryBorderNation && (
+              <p className="mt-2">
+                Border Countries : <span>{nationList}</span>
+              </p>
+            )}
           </div>
         </div>
       </div>

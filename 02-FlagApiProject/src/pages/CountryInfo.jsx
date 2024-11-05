@@ -47,6 +47,7 @@ function CountryInfo() {
                 countryContinent={item.continents}
                 countryTimeZone={item.timezones}
                 countryIcon={item.flag}
+                countryBorderNation={item.borders}
               />
             </div>
           ))

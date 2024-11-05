@@ -104,6 +104,25 @@
   border-radius: 10px;
 }
 
+.inputText {
+  border: 2px solid var(--primary-text-color);
+  background: var(--primary-bg-color);
+  padding: 8px 8px 8px 35px;
+  border-radius: 10px;
+  color: var(--primary-text-color);
+}
+
+.searchInputWrap {
+  position: relative;
+  margin: 20px 0;
+}
+
+.searchIcon {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+}
+
 @media only screen and (max-width: 768px) {
   .containerWrap {
     padding: 0 15px;

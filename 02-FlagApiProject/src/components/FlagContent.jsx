@@ -5,17 +5,46 @@ import { ThemeContext } from "../context/ThemeContext";
 function FlagContent() {
   const { flagData } = useContext(ThemeContext);
 
+  const [flagCountryList, setFlagCountryList] = useState(flagData);
+  const [searchquery, setSearchQuery] = useState("");
+
+  const searchFilter = () => {
+    const countrySearchValue = flagData?.filter((item) =>
+      item.name.common.toLowerCase().includes(searchquery.toLowerCase())
+    );
+    setFlagCountryList(countrySearchValue);
+  };
+
+  useEffect(() => {
+    searchFilter();
+
+    console.log(flagCountryList);
+  }, [searchquery]);
+
   return (
     <>
       <div className="FlagDisplayWrapper py-5">
         <div className="containerWrap">
+          <div className="searchInputWrap">
+            <input
+              type="text"
+              className=" inputText "
+              placeholder="Search Your Favourite Country ..."
+              value={searchquery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <span className="searchIcon">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </span>
+          </div>
+
           <div className="row">
-            {!flagData ? (
+            {!flagCountryList ? (
               <div>
                 <p>Loading Flag Details ...</p>
               </div>
             ) : (
-              flagData?.map((item, index) => (
+              flagCountryList?.map((item, index) => (
                 <div key={item.name.common} className="col-md-3">
                   <FlagCard
                     countryFlagImg={item.flags.svg}

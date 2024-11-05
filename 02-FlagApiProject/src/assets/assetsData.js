@@ -4,6 +4,7 @@ import moon from "./moon.svg";
 import sun from "./sun.svg";
 import blackHome from "./home-black.svg";
 import whiteHome from "./home-white.svg";
+import earth from "./earth.svg";
 
 export const assets = {
   react,
@@ -12,4 +13,5 @@ export const assets = {
   sun,
   blackHome,
   whiteHome,
+  earth,
 };

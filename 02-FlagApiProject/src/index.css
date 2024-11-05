@@ -39,7 +39,12 @@
 
 .col-md-3 {
   width: 25%;
-  padding: 10px;
+  padding: 0 10px;
+}
+
+.col-md-6 {
+  width: 50%;
+  padding: 0 10px;
 }
 
 .flagImg {
@@ -74,4 +79,49 @@
 
 .flagImgWrap {
   border-bottom: 2px solid var(--primary-text-color);
+}
+
+/* country info */
+
+.countryInfoSection {
+  background: var(--primary-bg-color);
+  height: 100vh;
+}
+
+.countryName {
+  color: var(--primary-text-color);
+}
+
+.countryInfoFlagContent {
+  color: var(--primary-text-color);
+}
+
+.backBtn,
+.mapbtn {
+  color: var(--primary-bg-color);
+  background: var(--primary-text-color);
+  padding: 7px 15px;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .containerWrap {
+    padding: 0 15px;
+  }
+  .col-md-3 {
+    width: 100%;
+  }
+
+  .col-md-6 {
+    width: 100%;
+  }
+
+  .countryInfoFlagContent {
+    margin: 30px 0;
+  }
+
+  .mapbtn {
+    width: 195px;
+    text-align: center;
+  }
 }

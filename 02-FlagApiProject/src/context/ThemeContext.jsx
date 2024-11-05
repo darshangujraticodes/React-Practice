@@ -8,6 +8,8 @@ const ThemeContextProvider = ({ children }) => {
   const [flagData, setFlagData] = useState();
   const [apiError, setApiError] = useState(false);
 
+  const [selectedCountryData, setSelectedCountryData] = useState();
+
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -38,6 +40,8 @@ const ThemeContextProvider = ({ children }) => {
     setDarkMode,
     flagData,
     setFlagData,
+    selectedCountryData,
+    setSelectedCountryData,
   };
 
   const localStorageValue = localStorage.getItem("darkmode");

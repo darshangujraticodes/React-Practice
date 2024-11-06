@@ -5,7 +5,7 @@ import { ThemeContext } from "../context/ThemeContext";
 function FlagContent() {
   const { flagData } = useContext(ThemeContext);
 
-  const [flagCountryList, setFlagCountryList] = useState(flagData);
+  const [flagCountryList, setFlagCountryList] = useState();
   const [searchquery, setSearchQuery] = useState("");
 
   const searchFilter = () => {
@@ -20,6 +20,12 @@ function FlagContent() {
 
     console.log(flagCountryList);
   }, [searchquery]);
+
+  useEffect(() => {
+    setFlagCountryList(flagData);
+
+    console.log(flagCountryList);
+  }, [flagData]);
 
   return (
     <>

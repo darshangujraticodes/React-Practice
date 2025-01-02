@@ -1,0 +1,50 @@
+.inputData {
+  margin-bottom: 10px;
+  width: 70%;
+  margin-top: 3px;
+}
+
+.selectCategory {
+  padding: 5px 0;
+}
+
+.submitBtn {
+  width: 70%;
+  margin-top: 5px;
+}
+
+.errorText {
+  color: red !important;
+  font-size: 15px;
+  margin-bottom: 5px !important;
+  display: none;
+}
+
+.expense-table th,
+.expense-table td {
+  border: 1px solid #444;
+  text-align: left;
+  padding: 4px 8px;
+  width: 150px;
+}
+
+.expense-table select {
+  font: inherit;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+/* responsive media query */
+
+@media (max-width: 768px) {
+  .inputData,
+  .submitBtn {
+    width: 100%;
+  }
+
+  .taskFormWrap {
+    margin-top: 20px;
+  }
+}

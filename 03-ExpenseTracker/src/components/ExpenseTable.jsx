@@ -1,6 +1,15 @@
 import React from "react";
 
 function ExpenseTable({ expenseList }) {
+  // Object.values(object1).reduce((a, b) => a + b, 0)
+
+  const totalAmount = expenseList.reduce(
+    (sum, expense) => parseInt(sum) + parseInt(expense.amount),
+    0
+  );
+
+  console.log(expenseList, totalAmount);
+
   return (
     <table className="expense-table">
       <thead>
@@ -53,7 +62,7 @@ function ExpenseTable({ expenseList }) {
         <tr>
           <th>Total</th>
           <th></th>
-          <th>₹8100</th>
+          <th>₹{totalAmount}</th>
         </tr>
       </tbody>
     </table>

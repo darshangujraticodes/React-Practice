@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 
 function ExpenseForm({ setExpenses }) {
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [amount, setAmount] = useState("");
-
   const emptyTaskList = {
     title: "",
     category: "",
     amount: "",
   };
   const [expenseData, setExpenseData] = useState(emptyTaskList);
-
-  console.log(expenseData.title, expenseData.category, expenseData.amount);
-
-  console.log(expenseData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +15,8 @@ function ExpenseForm({ setExpenses }) {
       ...prevState,
       { ...expenseData, id: crypto.randomUUID() },
     ]);
+
+    console.log(expenseData);
 
     setExpenseData(emptyTaskList);
   };

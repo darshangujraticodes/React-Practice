@@ -9,7 +9,6 @@ function ExpenseForm({ setExpenses }) {
     title: "",
     category: "",
     amount: "",
-    id: crypto.randomUUID(),
   };
   const [expenseData, setExpenseData] = useState(emptyTaskList);
 
@@ -20,15 +19,10 @@ function ExpenseForm({ setExpenses }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // getFormData(e.target);
-
-    // 1st method
-    // setExpenses((prevState) => [
-    //   ...prevState,
-    //   { ...getFormData(e.target), id: crypto.randomUUID() },
-    // ]);
-
-    setExpenses((prevState) => [...prevState, expenseData]);
+    setExpenses((prevState) => [
+      ...prevState,
+      { ...expenseData, id: crypto.randomUUID() },
+    ]);
 
     setExpenseData(emptyTaskList);
   };
@@ -81,11 +75,11 @@ function ExpenseForm({ setExpenses }) {
             <option value="" hidden>
               Select Task Category
             </option>
-            <option value="grocery">Grocery</option>
-            <option value="clothes">Clothes</option>
-            <option value="bills">Bills</option>
-            <option value="education">Education</option>
-            <option value="medicine">Medicine</option>
+            <option value="Grocery">Grocery</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Bills">Bills</option>
+            <option value="Education">Education</option>
+            <option value="Medicine">Medicine</option>
           </select>
           <p className="errorText">Enter Valid Task Category</p>
         </div>

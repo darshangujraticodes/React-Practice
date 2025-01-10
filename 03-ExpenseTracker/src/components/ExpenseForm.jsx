@@ -8,8 +8,53 @@ function ExpenseForm({ setExpenses }) {
   };
   const [expenseData, setExpenseData] = useState(emptyTaskList);
 
+  console.log(expenseData);
+
+  // onchange common function
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setExpenseData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  // validation function
+
+  const [errors, setErrors] = useState();
+
+  const validate = (formData) => {
+    const errorsData = {};
+
+    if (!formData.title) {
+      errorsData.title = "Enter Valid Title";
+    }
+
+    if (!formData.category) {
+      errorsData.category = "Enter Valid Category";
+    }
+
+    if (!formData.amount) {
+      errorsData.amount = "Enter Valid Amount";
+    }
+
+    setErrors(errorsData);
+
+    return errorsData;
+  };
+
+  // form submit handle function
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const validateResult = validate(expenseData);
+    // console.log(validateResult);
+
+    console.log(Object.keys(validateResult));
+
+    if (Object.keys(validateResult).length) return;
 
     setExpenses((prevState) => [
       ...prevState,
@@ -42,12 +87,7 @@ function ExpenseForm({ setExpenses }) {
             placeholder="Enter Task Name"
             className="inputData  titleInput "
             value={expenseData.title}
-            onChange={(e) =>
-              setExpenseData((prevState) => ({
-                ...prevState,
-                title: e.target.value,
-              }))
-            }
+            onChange={handleChange}
           />
           <p className="errorText">Enter Valid Task Name</p>
         </div>
@@ -59,12 +99,7 @@ function ExpenseForm({ setExpenses }) {
             className="inputData selectCategory"
             id="taskCategory"
             value={expenseData.category}
-            onChange={(e) =>
-              setExpenseData((prevState) => ({
-                ...prevState,
-                category: e.target.value,
-              }))
-            }
+            onChange={handleChange}
           >
             <option value="" hidden>
               Select Task Category
@@ -87,12 +122,7 @@ function ExpenseForm({ setExpenses }) {
             placeholder="Enter Task Name"
             className="inputData  amountInput "
             value={expenseData.amount}
-            onChange={(e) =>
-              setExpenseData((prevState) => ({
-                ...prevState,
-                amount: e.target.value,
-              }))
-            }
+            onChange={handleChange}
           />
           <p className="errorText">Enter Valid Task Amount</p>
         </div>

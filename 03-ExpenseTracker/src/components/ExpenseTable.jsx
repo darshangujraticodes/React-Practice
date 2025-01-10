@@ -8,7 +8,7 @@ function ExpenseTable({ expenseList }) {
     0
   );
 
-  console.log(expenseList, totalAmount);
+  // console.log(expenseList, totalAmount);
 
   return (
     <table className="expense-table">
@@ -62,7 +62,7 @@ function ExpenseTable({ expenseList }) {
         <tr>
           <th>Total</th>
           <th></th>
-          <th>₹{totalAmount}</th>
+          <th>₹ {totalAmount}</th>
         </tr>
       </tbody>
     </table>

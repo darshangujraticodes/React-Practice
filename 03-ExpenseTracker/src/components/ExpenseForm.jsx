@@ -8,7 +8,7 @@ function ExpenseForm({ setExpenses }) {
   };
   const [expenseData, setExpenseData] = useState(emptyTaskList);
 
-  console.log(expenseData);
+  // console.log(expenseData);
 
   // onchange common function
 
@@ -24,10 +24,15 @@ function ExpenseForm({ setExpenses }) {
 
   const [errors, setErrors] = useState();
 
+  console.log(errors);
+
   const validate = (formData) => {
     const errorsData = {};
 
-    if (!formData.title) {
+    const charRegex = /^[A-Za-z\s]+$/;
+    const digitRegex = /^[0-9]+$/;
+
+    if (!formData.title || !charRegex.test(formData.title)) {
       errorsData.title = "Enter Valid Title";
     }
 
@@ -35,7 +40,7 @@ function ExpenseForm({ setExpenses }) {
       errorsData.category = "Enter Valid Category";
     }
 
-    if (!formData.amount) {
+    if (!formData.amount || !digitRegex.test(formData.amount)) {
       errorsData.amount = "Enter Valid Amount";
     }
 
@@ -52,7 +57,7 @@ function ExpenseForm({ setExpenses }) {
     const validateResult = validate(expenseData);
     // console.log(validateResult);
 
-    console.log(Object.keys(validateResult));
+    // console.log(Object.keys(validateResult));
 
     if (Object.keys(validateResult).length) return;
 
@@ -109,6 +114,7 @@ function ExpenseForm({ setExpenses }) {
             <option value="Bills">Bills</option>
             <option value="Education">Education</option>
             <option value="Medicine">Medicine</option>
+            <option value="Entertainment">Entertainment</option>
           </select>
           <p className="errorText">Enter Valid Task Category</p>
         </div>

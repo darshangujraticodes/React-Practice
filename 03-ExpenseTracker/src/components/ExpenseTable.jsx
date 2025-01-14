@@ -3,6 +3,8 @@ import React from "react";
 function ExpenseTable({ expenseList }) {
   // Object.values(object1).reduce((a, b) => a + b, 0)
 
+  // reduce((accumulator, currentvalue) => business_logic,  initial value )
+
   const totalAmount = expenseList.reduce(
     (sum, expense) => parseInt(sum) + parseInt(expense.amount),
     0
@@ -18,11 +20,12 @@ function ExpenseTable({ expenseList }) {
           <th>
             <select>
               <option value="">All</option>
-              <option value="grocery">Grocery</option>
-              <option value="clothes">Clothes</option>
-              <option value="bills">Bills</option>
-              <option value="education">Education</option>
-              <option value="medicine">Medicine</option>
+              <option value="Grocery">Grocery</option>
+              <option value="Clothes">Clothes</option>
+              <option value="Bills">Bills</option>
+              <option value="Education">Education</option>
+              <option value="Medicine">Medicine</option>
+              <option value="Entertainment">Entertainment</option>
             </select>
           </th>
           <th className="amount-column">

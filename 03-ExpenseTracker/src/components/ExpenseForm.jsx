@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 
+import InputTextBox from "../components/InputTextBox";
+import SelectInputField from "./SelectInputField";
+
+// https://www.youtube.com/watch?v=w2ebVv_Rp7M&list=PLfEr2kn3s-brb-vHE-c-QCUq-nFwDYtWu&index=37
+
 function ExpenseForm({ setExpenses }) {
   const emptyTaskList = {
     title: "",
     category: "",
     amount: "",
   };
+
   const [expenseData, setExpenseData] = useState(emptyTaskList);
+
+  const [errors, setErrors] = useState(emptyTaskList);
 
   // console.log(expenseData);
 
@@ -18,13 +26,24 @@ function ExpenseForm({ setExpenses }) {
       ...prevState,
       [name]: value,
     }));
+
+    setErrors(emptyTaskList);
   };
 
   // validation function
 
-  const [errors, setErrors] = useState();
-
   console.log(errors);
+
+  const validateConfig = {
+    title: [
+      { required: true, message: "Please Enter Title" },
+      { onlyCharachter: true, message: "Please Enter Valid Title" },
+      {
+        minLength: 3,
+        message: "Minimum Title Length should be 3 Charachter Lon",
+      },
+    ],
+  };
 
   const validate = (formData) => {
     const errorsData = {};
@@ -37,7 +56,7 @@ function ExpenseForm({ setExpenses }) {
     }
 
     if (!formData.category) {
-      errorsData.category = "Enter Valid Category";
+      errorsData.category = "Select Your Category";
     }
 
     if (!formData.amount || !digitRegex.test(formData.amount)) {
@@ -71,67 +90,51 @@ function ExpenseForm({ setExpenses }) {
     setExpenseData(emptyTaskList);
   };
 
-  //   const getFormData = (form) => {
-  //     const formData = new FormData(form);
-  //     const data = {};
-  //     for (const [key, value] of formData.entries()) {
-  //       data[key] = value;
-  //     }
-  //     return data;
-  //   };
-
   return (
     <>
       <form action="" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="taskName">Title</label> <br />
-          <input
-            type="text"
-            id="taskName"
-            name="title"
-            placeholder="Enter Task Name"
-            className="inputData  titleInput "
-            value={expenseData.title}
-            onChange={handleChange}
-          />
-          <p className="errorText">Enter Valid Task Name</p>
-        </div>
+        {/* custom Input text  */}
 
-        <div>
-          <label htmlFor="taskCategory">Category</label> <br />
-          <select
-            name="category"
-            className="inputData selectCategory"
-            id="taskCategory"
-            value={expenseData.category}
-            onChange={handleChange}
-          >
-            <option value="" hidden>
-              Select Task Category
-            </option>
-            <option value="Grocery">Grocery</option>
-            <option value="Clothes">Clothes</option>
-            <option value="Bills">Bills</option>
-            <option value="Education">Education</option>
-            <option value="Medicine">Medicine</option>
-            <option value="Entertainment">Entertainment</option>
-          </select>
-          <p className="errorText">Enter Valid Task Category</p>
-        </div>
+        <InputTextBox
+          id="taskName"
+          label="Title"
+          name="title"
+          placeholder="Enter Task Name"
+          value={expenseData.title}
+          errorValue={errors.title}
+          className={`inputData  ${"titleInput"}`}
+          onChangeFunction={handleChange}
+        />
 
-        <div>
-          <label htmlFor="taskAmount">Amount</label> <br />
-          <input
-            type="text"
-            name="amount"
-            id="taskAmount"
-            placeholder="Enter Task Name"
-            className="inputData  amountInput "
-            value={expenseData.amount}
-            onChange={handleChange}
-          />
-          <p className="errorText">Enter Valid Task Amount</p>
-        </div>
+        <SelectInputField
+          id="taskCategory"
+          label="Category"
+          name="category"
+          className={`inputData  ${"selectCategory"}`}
+          value={expenseData.category}
+          onChangeFunction={handleChange}
+          defaultOption="Select Your Category"
+          optionArray={[
+            "Grocery",
+            "Education",
+            "Entertainment",
+            "Clothes",
+            "Bills",
+            "Medicine",
+          ]}
+          error={errors.category}
+        />
+
+        <InputTextBox
+          id="taskAmount"
+          label="Amount"
+          name="amount"
+          placeholder="Enter Amount"
+          value={expenseData.amount}
+          errorValue={errors.amount}
+          className={`inputData  ${"amountInput"}`}
+          onChangeFunction={handleChange}
+        />
 
         <div>
           <input type="submit" className="submitBtn" value="Submit" />

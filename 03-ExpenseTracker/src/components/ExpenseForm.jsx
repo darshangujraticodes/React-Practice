@@ -32,36 +32,63 @@ function ExpenseForm({ setExpenses }) {
 
   // validation function
 
-  console.log(errors);
+  // console.log(errors);
 
   const validateConfig = {
     title: [
-      { required: true, message: "Please Enter Title" },
-      { onlyCharachter: true, message: "Please Enter Valid Title" },
+      { required: true, message: "Title Cannot Be Empty" },
+      { pattern: /^[A-Za-z\s]+$/, message: "Please Enter Valid Title" },
       {
-        minLength: 3,
-        message: "Minimum Title Length should be 3 Charachter Lon",
+        minLength: 5,
+        message: "Minimum Title Length should be 5 Charachter Long",
       },
+    ],
+    category: [{ required: true, message: "Select Your Category" }],
+    amount: [
+      { required: true, message: "Amount Cannot Be Empty" },
+      { pattern: /^[0-9]+$/, message: "Please Enter Valid Amount" },
     ],
   };
 
   const validate = (formData) => {
-    const errorsData = {};
-
     const charRegex = /^[A-Za-z\s]+$/;
     const digitRegex = /^[0-9]+$/;
+    const errorsData = {};
 
-    if (!formData.title || !charRegex.test(formData.title)) {
-      errorsData.title = "Enter Valid Title";
-    }
+    console.log(Object.entries(formData));
 
-    if (!formData.category) {
-      errorsData.category = "Select Your Category";
-    }
+    Object.entries(formData).forEach(([key, value]) => {
+      validateConfig[key].some((rule) => {
+        // console.log(rule);
 
-    if (!formData.amount || !digitRegex.test(formData.amount)) {
-      errorsData.amount = "Enter Valid Amount";
-    }
+        if (rule.required && !value) {
+          errorsData[key] = rule.message;
+          return true;
+        }
+
+        if (rule.minLength && value.length < rule.minLength) {
+          errorsData[key] = rule.message;
+          return true;
+        }
+
+        if (rule.pattern && !rule.pattern.test(value)) {
+          errorsData[key] = rule.message;
+          return true;
+        }
+      });
+    });
+
+    // if (!formData.title || !charRegex.test(formData.title)) {
+    //   errorsData.title = "Enter Valid Title";
+    // }
+
+    // if (!formData.category) {
+    //   errorsData.category = "Select Your Category";
+    // }
+
+    // if (!formData.amount || !digitRegex.test(formData.amount)) {
+    //   errorsData.amount = "Enter Valid Amount";
+    // }
 
     setErrors(errorsData);
 
@@ -85,7 +112,7 @@ function ExpenseForm({ setExpenses }) {
       { ...expenseData, id: crypto.randomUUID() },
     ]);
 
-    console.log(expenseData);
+    // console.log(expenseData);
 
     setExpenseData(emptyTaskList);
   };

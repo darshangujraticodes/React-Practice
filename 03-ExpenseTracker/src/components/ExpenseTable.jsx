@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function ExpenseTable({ expenseList }) {
+  const [categoryFilter, setCategoryFilter] = useState("");
+
+  const [expenseListData, setExpenseListData] = useState(expenseList);
+
   // Object.values(object1).reduce((a, b) => a + b, 0)
 
   // reduce((accumulator, currentvalue) => business_logic,  initial value )
@@ -10,7 +14,20 @@ function ExpenseTable({ expenseList }) {
     0
   );
 
-  // console.log(expenseList, totalAmount);
+  // table category filter
+  // const filterData;
+
+  useEffect(() => {
+    console.log(categoryFilter);
+    let filterExpenseList;
+
+    filterExpenseList = expenseList.filter((item) =>
+      item.category.toLowerCase().includes(categoryFilter.toLowerCase())
+    );
+    setExpenseListData(filterExpenseList);
+
+    console.log(filterExpenseList);
+  }, [categoryFilter]);
 
   return (
     <table className="expense-table">
@@ -18,7 +35,11 @@ function ExpenseTable({ expenseList }) {
         <tr>
           <th>Title</th>
           <th>
-            <select>
+            <select
+              id="filterCategory"
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+            >
               <option value="">All</option>
               <option value="Grocery">Grocery</option>
               <option value="Clothes">Clothes</option>
@@ -54,7 +75,7 @@ function ExpenseTable({ expenseList }) {
         </tr>
       </thead>
       <tbody>
-        {expenseList?.map((task, index) => (
+        {expenseListData?.map((task, index) => (
           <tr key={task.id}>
             <td>{task.title}</td>
             <td>{task.category}</td>

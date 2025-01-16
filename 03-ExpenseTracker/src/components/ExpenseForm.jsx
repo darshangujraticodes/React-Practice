@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import InputTextBox from "../components/InputTextBox";
 import SelectInputField from "./SelectInputField";
 
-// https://www.youtube.com/watch?v=w2ebVv_Rp7M&list=PLfEr2kn3s-brb-vHE-c-QCUq-nFwDYtWu&index=37
+// https://www.youtube.com/watch?v=QaYWYJ9OuQE&list=PLfEr2kn3s-brb-vHE-c-QCUq-nFwDYtWu&index=38
 
 function ExpenseForm({ setExpenses }) {
   const emptyTaskList = {
@@ -51,8 +51,6 @@ function ExpenseForm({ setExpenses }) {
   };
 
   const validate = (formData) => {
-    const charRegex = /^[A-Za-z\s]+$/;
-    const digitRegex = /^[0-9]+$/;
     const errorsData = {};
 
     console.log(Object.entries(formData));
@@ -77,18 +75,6 @@ function ExpenseForm({ setExpenses }) {
         }
       });
     });
-
-    // if (!formData.title || !charRegex.test(formData.title)) {
-    //   errorsData.title = "Enter Valid Title";
-    // }
-
-    // if (!formData.category) {
-    //   errorsData.category = "Select Your Category";
-    // }
-
-    // if (!formData.amount || !digitRegex.test(formData.amount)) {
-    //   errorsData.amount = "Enter Valid Amount";
-    // }
 
     setErrors(errorsData);
 

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseTable from "./components/ExpenseTable";
-import expenseData from "./components/expenseData";
+import { FormContext } from "./context/FormContext";
 
 function App() {
-  const [expenses, setExpenses] = useState(expenseData);
+  const { expenses, setExpenses } = useContext(FormContext);
 
   return (
     <>

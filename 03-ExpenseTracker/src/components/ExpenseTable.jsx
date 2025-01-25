@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useFilter } from "../hooks/useFilter";
 import ContextMenu from "./ContextMenu";
+import { FormContext } from "../context/FormContext";
 
 function ExpenseTable({ expenseList, setExpensesList }) {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [menuPosition, setMenuposition] = useState({});
 
-  const [listId, setListId] = useState("");
-
-  const deleteFilterList = expenseList.filter((item) => item.id !== listId);
+  const { listId, setListId, editMode, setEditMode } = useContext(FormContext);
 
   const { filteredData, setQuery } = useFilter(
     expenseList,
@@ -21,18 +20,10 @@ function ExpenseTable({ expenseList, setExpensesList }) {
     0
   );
 
-  // table category filter
-  // const filterData;
-
   useEffect(() => {
     setQuery(categoryFilter);
-
     // console.log(filterExpenseList);
   }, [categoryFilter]);
-
-  // console.log(filteredData);
-  // console.log(listId);
-  // console.log(deleteFilterList);
 
   return (
     <>
@@ -95,6 +86,8 @@ function ExpenseTable({ expenseList, setExpensesList }) {
                 // console.log("left = ", e.clientX, "right = ", e.clientY);
                 setListId(task.id);
                 setMenuposition({ left: e.clientX + 4, top: e.clientY + 4 });
+
+                setEditMode(true);
               }}
             >
               <td>{task.title}</td>

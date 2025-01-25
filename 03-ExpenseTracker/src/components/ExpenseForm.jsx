@@ -1,24 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import InputTextBox from "../components/InputTextBox";
 import SelectInputField from "./SelectInputField";
-
-// https://www.youtube.com/watch?v=QaYWYJ9OuQE&list=PLfEr2kn3s-brb-vHE-c-QCUq-nFwDYtWu&index=38
+import { FormContext } from "../context/FormContext";
 
 function ExpenseForm({ setExpenses }) {
-  const emptyTaskList = {
-    title: "",
-    category: "",
-    amount: "",
-  };
-
-  const [expenseData, setExpenseData] = useState(emptyTaskList);
+  const {
+    listId,
+    emptyTaskList,
+    expenseData,
+    setExpenseData,
+    editMode,
+    setEditMode,
+  } = useContext(FormContext);
 
   const [errors, setErrors] = useState(emptyTaskList);
-
-  // console.log(expenseData);
-
-  // onchange common function
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +25,8 @@ function ExpenseForm({ setExpenses }) {
 
     setErrors(emptyTaskList);
   };
+
+  // console.log(editMode);
 
   // validation function
 
@@ -87,19 +85,26 @@ function ExpenseForm({ setExpenses }) {
     e.preventDefault();
 
     const validateResult = validate(expenseData);
-    // console.log(validateResult);
-
-    // console.log(Object.keys(validateResult));
 
     if (Object.keys(validateResult).length) return;
 
-    setExpenses((prevState) => [
-      ...prevState,
-      { ...expenseData, id: crypto.randomUUID() },
-    ]);
+    if (!editMode) {
+      setExpenses((prevState) => [
+        ...prevState,
+        { ...expenseData, id: crypto.randomUUID() },
+      ]);
+    } else {
+      setExpenses((prevState) =>
+        prevState.map((item) => {
+          if (item.id === listId) {
+            return { ...expenseData, id: listId };
+          }
+          return item;
+        })
+      );
+    }
 
-    // console.log(expenseData);
-
+    setEditMode(false);
     setExpenseData(emptyTaskList);
   };
 

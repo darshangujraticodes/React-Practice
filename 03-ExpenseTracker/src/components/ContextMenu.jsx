@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FormContext } from "../context/FormContext";
 
 function ContextMenu({
   menuPosition,
@@ -6,19 +7,34 @@ function ContextMenu({
   setExpensesList,
   listId,
 }) {
+  const { expenses, expenseData, setExpenseData } = useContext(FormContext);
+
+  // console.log(expenseData, expenses);
+
   if (!menuPosition.left) return null;
+
+  const listEditOperation = () => {
+    console.log("Editing", listId);
+
+    const { title, category, amount } = expenses.find(
+      (item) => item.id === listId
+    );
+    console.log("inputEdit Info = ", title, category, amount);
+
+    setExpenseData({
+      title,
+      category,
+      amount,
+    });
+
+    setMenuposition({});
+  };
 
   return (
     <>
       <div className="context-menu" style={{ ...menuPosition }}>
         <div className="contextbuttonWrap">
-          <button
-            onClick={(e) => {
-              // console.log("Editing");
-              setMenuposition({});
-            }}
-            className="contextMenuButton"
-          >
+          <button onClick={listEditOperation} className="contextMenuButton">
             Edit
           </button>
         </div>

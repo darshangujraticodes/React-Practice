@@ -53,7 +53,7 @@ function ExpenseForm({ setExpenses }) {
   const validate = (formData) => {
     const errorsData = {};
 
-    console.log(Object.entries(formData));
+    // console.log(Object.entries(formData));
 
     Object.entries(formData).forEach(([key, value]) => {
       validateConfig[key].some((rule) => {

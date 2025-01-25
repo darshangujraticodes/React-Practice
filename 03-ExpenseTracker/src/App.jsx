@@ -25,7 +25,10 @@ function App() {
                 <div className="taskFormWrap">
                   <h4 className="">Task List</h4>
                   <div className="taskListContentWrap mt-3">
-                    <ExpenseTable expenseList={expenses} />
+                    <ExpenseTable
+                      expenseList={expenses}
+                      setExpensesList={setExpenses}
+                    />
                   </div>
                 </div>
               </div>

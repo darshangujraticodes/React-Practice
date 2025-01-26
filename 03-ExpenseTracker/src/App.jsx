@@ -17,7 +17,6 @@ function App() {
               <div className="col-md-6">
                 <div className="taskFormWrap">
                   <h4>Enter Task Details</h4>
-
                   <ExpenseForm setExpenses={setExpenses} />
                 </div>
               </div>

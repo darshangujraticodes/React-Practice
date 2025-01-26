@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-
 import InputTextBox from "../components/InputTextBox";
 import SelectInputField from "./SelectInputField";
 import { FormContext } from "../context/FormContext";
@@ -27,10 +26,6 @@ function ExpenseForm({ setExpenses }) {
   };
 
   // console.log(editMode);
-
-  // validation function
-
-  // console.log(errors);
 
   const validateConfig = {
     title: [

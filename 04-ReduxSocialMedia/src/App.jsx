@@ -1,28 +1,51 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import AddTodo from "./components/AddTodo";
 import DisplayTodo from "./components/DisplayTodo";
+import Parent from "./components/Parent";
 
 function App() {
-  const oldArray = [
-    { id: 1, name: "Alice", age: 25 },
-    { id: 2, name: "Bob", age: 30 },
-    { id: 3, name: "Charlie", age: 22 },
-  ];
+  /*
 
-  const newData = [
-    { id: 2, name: "Bob", age: 35 }, // Updated age
-    { id: 3, name: "Charlie", age: 26 }, // Updated age
-  ];
+  Redux -> State Management tool
 
-  // Updating old array with new data
-  const updatedArray = oldArray.map((item) => {
-    // Find matching item from newData using id
-    const updatedItem = newData.find((newItem) => newItem.id === item.id);
-    // Return updated item if found, else keep the old one
-    return updatedItem ? { ...item, ...updatedItem } : item;
-  });
+  Redux Toolkit -> Package developed by react to reduce boiler plate
+
+  react-redux -> provide store wheere state value is store.
+
+  state : it is buit in react object which is used to contain data or information which need to share across diferrent components
+
+
+
+  Steps for Redux
+
+  step 1: 
+  
+  install redux library in react app : 
+
+  npm install @reduxjs/toolkit
+  npm install react-redux
+
+  step 2: 
+
+  create store using configurestore() provided by @reduxjs/toolkit
+
+  and inside provide reducer  : {}
+
+
+  step 3:
+
+  import provider and wrap complete react app inside to share store access to all components store = store 
+ 
+  Provider provided by react-redux
+
+
+  step 4:
+
+  create slice inside feature folder slice is nothing but functionality
+
+  reducer operation logic is written in slice
+
+
+  */
 
   return (
     <>
@@ -33,6 +56,10 @@ function App() {
 
         <div className="centerData displayTableData">
           <DisplayTodo />
+        </div>
+
+        <div className="centerData">
+          <Parent />
         </div>
       </div>
     </>

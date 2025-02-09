@@ -5,7 +5,7 @@ import expenseDataInfo from "../components/expenseData";
 export const FormContext = createContext();
 
 const FormContextProvider = ({ children }) => {
-  const [expenses, setExpenses] = useState(expenseDataInfo);
+  const [  , setExpenses] = useState(expenseDataInfo);
 
   const emptyTaskList = {
     title: "",

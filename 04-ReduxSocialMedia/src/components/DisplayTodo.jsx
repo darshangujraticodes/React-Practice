@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTodo, removeTodo, updateTodo } from "../features/todo/todoSlice";
+import AddTodo from "./AddTodo";
 
 function DisplayTodo() {
   const [taskData, setTaskData] = useState();
 
-  const storeTodoData = useSelector((state) => state.todos);
+  const storeTodoData = useSelector((state) => state.todoStoreReducer.todos);
 
   const dispatch = useDispatch();
 
-  console.log(storeTodoData);
+  // console.log(storeTodoData);
 
-  console.log(taskData);
+  // console.log(taskData);
 
   return (
     <>
-      <div>
+      <div className="mt-3">
+        <AddTodo />
+      </div>
+
+      <div className=" mt-4 d-flex justify-content-center">
         <table>
           <thead>
             <tr>
@@ -26,7 +31,7 @@ function DisplayTodo() {
           </thead>
 
           <tbody>
-            {storeTodoData.map((item, index) => (
+            {storeTodoData?.map((item, index) => (
               <tr key={item.id}>
                 <td>{index + 1}</td>
                 <td>{item.text}</td>

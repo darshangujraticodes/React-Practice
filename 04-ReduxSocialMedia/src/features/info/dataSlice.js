@@ -4,15 +4,22 @@ const initialState = {
   value: 0,
 };
 
-export const dataInfoSlice = {
-  name: InfoSlice,
+export const dataInfoSlice = createSlice({
+  name: "DataInfo",
   initialState,
   reducers: {
-    addData: (state, action) => {},
-    showData: (state, action) => {},
+    dataIncrement: (state) => {
+      state.value += 1;
+    },
+    addData: (state, action) => {
+      state.value = action.payload;
+    },
+    showData: (state, action) => {
+      state.value = state.value;
+    },
   },
-};
+});
 
-export const { addData, showData } = dataInfoSlice.actions;
+export const { addData, showData, dataIncrement } = dataInfoSlice.actions;
 
 export default dataInfoSlice.reducer;

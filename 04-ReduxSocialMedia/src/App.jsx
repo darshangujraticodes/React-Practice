@@ -1,9 +1,4 @@
-import AddTodo from "./components/AddTodo";
-import DisplayTodo from "./components/DisplayTodo";
-import Parent from "./components/Parent";
-
-function App() {
-  /*
+/*
 
   Redux -> State Management tool
 
@@ -44,24 +39,31 @@ function App() {
 
   reducer operation logic is written in slice
 
+  slice ==. eg src/features/tood/todoSlice.js
+
+  todoslice contains all action of reducer which is used to perform operation on state in store
+
+  note in slice we have to export reducer and action differently.
+
+  createSlice() is used to create slice in redux toolkit, It required three object property name , intialState, reducers
+  reducer contains action fuctions which is used to perform operation on state in store
+
+  step 5:
+
+  Add slice reducer to store 
+
 
   */
 
+import { useSelector } from "react-redux";
+
+function App() {
+  // note here state data is accessed using useSelector hook with store reducer name state.storeReducername.slice initial state property name
+  // const productData = useSelector((state) => state.cartStoreReducer.items);
+
   return (
     <>
-      <div>
-        <h1>Learn about React Redux toolkit</h1>
-
-        <AddTodo />
-
-        <div className="centerData displayTableData">
-          <DisplayTodo />
-        </div>
-
-        <div className="centerData">
-          <Parent />
-        </div>
-      </div>
+      <div></div>
     </>
   );
 }

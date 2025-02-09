@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../features/cart/cartSlice";
+import {
+  decreaseQuantityByOne,
+  increaseQuantityByOne,
+  removeFromCart,
+} from "../features/cart/cartSlice";
 
 function CartProduct({
   cartProductImg,
@@ -63,8 +67,7 @@ function CartProduct({
           </label>
           <div className="d-flex mb-4">
             <button
-              data-mdb-button-init
-              data-mdb-ripple-init
+              onClick={() => dispatch(decreaseQuantityByOne(cartProductId))}
               className="btn btn-primary px-3 me-2"
             >
               <i className="fas fa-minus"></i>
@@ -77,8 +80,7 @@ function CartProduct({
             </div>
 
             <button
-              data-mdb-button-init
-              data-mdb-ripple-init
+              onClick={() => dispatch(increaseQuantityByOne(cartProductId))}
               className="btn btn-primary px-3 ms-2"
             >
               <i className="fas fa-plus"></i>

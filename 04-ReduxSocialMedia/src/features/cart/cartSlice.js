@@ -40,18 +40,49 @@ export const cartSlice = createSlice({
 
       state.cart = newCartList;
     },
-    displayCartItems: (state, action) => {},
-    getCartTotalPrice: (state, action) => {
-      const cartList = state.cart;
+    getCartTotal: (state, action) => {
+      const cartTotalQuantity = state.cart.reduce(
+        (acc, a) => acc + a.quantity,
+        0
+      );
 
-      let cartCalculatePrice = cartList.reduce((acc, a) => acc + a.price, 0);
+      const cartCalculatedPrice = state.cart.reduce((acc, a) => {
+        // console.log(
+        //   "priceCal = Item Quantity ",
+        //   a.quantity,
+        //   a.price,
+        //   a.quantity * a.price
+        // );
+        acc = acc + a.quantity * a.price;
 
-      return cartCalculatePrice;
+        return acc;
+      }, 0);
+
+      //   console.log("total price  = " + cartCalculatedPrice);
+
+      state.totalQuantity = cartTotalQuantity;
+      state.totalPrice = cartCalculatedPrice;
+    },
+    increaseQuantityByOne: (state, action) => {
+      let find = state.cart.findIndex((item) => item.id === action.payload);
+
+      state.cart[find].quantity += 1;
+    },
+    decreaseQuantityByOne: (state, action) => {
+      let find = state.cart.findIndex((item) => item.id === action.payload);
+
+      state.cart[find].quantity -= 1;
     },
   },
 });
 
-export const { addToCart, removeFromCart, displayCartItems } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  displayCartItems,
+  getCartTotal,
+  increaseQuantityByOne,
+  decreaseQuantityByOne,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

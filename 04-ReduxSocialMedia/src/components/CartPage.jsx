@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartProduct from "./CartProduct";
 import { useDispatch, useSelector } from "react-redux";
+import { getCartTotal } from "../features/cart/cartSlice";
 
 function CartPage() {
   const { cart, totalQuantity, totalPrice } = useSelector(
@@ -9,15 +10,11 @@ function CartPage() {
 
   const cartData = useSelector((state) => state.cartStoreReducer.cart);
 
-  const cartTotalQuantity = cartData.reduce((acc, a) => acc + a.quantity, 0);
-
-  const cartCalculatedPrice = cartData.reduce((acc, a) => acc + a.price, 0);
-
-  console.log("total price  = " + totalPrice);
-
   const dispatch = useDispatch();
 
-  //   console.log(cartData);
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [cart]);
 
   return (
     <>
@@ -27,7 +24,7 @@ function CartPage() {
             <div className="col-md-8">
               <div className="card mb-4">
                 <div className="card-header py-3">
-                  {/* <h5 className="mb-0">Cart - 2 items</h5> */}
+                  <h5 className="mb-0">Your Cart Has {cart.length} items</h5>
                 </div>
                 <div className="card-body">
                   {cartData.length > 0 ? (
@@ -89,7 +86,7 @@ function CartPage() {
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                       Total Quantity
-                      <span>{cartTotalQuantity}</span>
+                      <span>{totalQuantity}</span>
                     </li>
 
                     <hr />
@@ -99,7 +96,7 @@ function CartPage() {
                         <strong>Total amount</strong>
                       </div>
                       <span>
-                        <strong>₹ {cartCalculatedPrice}</strong>
+                        <strong>₹ {totalPrice}</strong>
                       </span>
                     </li>
                   </ul>

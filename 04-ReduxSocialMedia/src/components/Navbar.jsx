@@ -68,6 +68,24 @@ function Navbar() {
                 >
                   Redux Todo List
                 </NavLink>
+
+                <NavLink
+                  to="/rtk-api-call"
+                  className={({ isActive }) =>
+                    ` menu  ${isActive ? " menu-active " : ""} `
+                  }
+                >
+                  RTK API Call
+                </NavLink>
+
+                <NavLink
+                  to="/github-users"
+                  className={({ isActive }) =>
+                    ` menu  ${isActive ? " menu-active " : ""} `
+                  }
+                >
+                  Github API Call
+                </NavLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>

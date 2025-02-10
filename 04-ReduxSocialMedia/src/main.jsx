@@ -19,6 +19,8 @@ import HomePage from "./components/HomePage.jsx";
 import CartPage from "./components/CartPage.jsx";
 import { RouterProvider } from "react-router-dom";
 import DisplayTodo from "./components/DisplayTodo.jsx";
+import RtkApiCall from "./components/RtkApiCall.jsx";
+import FetchGithubUsers from "./components/FetchGithubUsers.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,8 @@ const router = createBrowserRouter(
       <Route path="" element={<HomePage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/todo" element={<DisplayTodo />} />
+      <Route path="/rtk-api-call" element={<RtkApiCall />} />
+      <Route path="/github-users" element={<FetchGithubUsers />} />
     </Route>
   )
 );

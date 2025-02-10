@@ -11,5 +11,7 @@ const fetchApiData = createAsyncThunk(apiData, async () => {});
 export const thunkSlice = createSlice({
   name: "api thunk",
   initialState,
-  extraReducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchApiData.pending, (state, action) => {});
+  },
 });

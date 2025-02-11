@@ -1,0 +1,41 @@
+.menuLink {
+  text-decoration: none;
+  padding: 5px 10px;
+  background: transparent;
+  margin: 0 5px;
+  border-radius: 8px;
+  color: #262626;
+}
+
+.menuActive {
+  background: #262626;
+  color: #fff;
+}
+
+.profileCardWrap {
+  padding: 20px;
+  border: 2px solid #262626;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.profileContent {
+  color: #262626;
+  text-decoration: none !important;
+}
+
+.underlineNone {
+  text-decoration: none !important;
+}
+
+.profileImg {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profileImgWrap {
+  display: flex;
+  justify-content: center;
+}

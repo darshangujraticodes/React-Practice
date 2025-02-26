@@ -18,29 +18,6 @@ function App() {
     });
   };
 
-  const todo = [
-    {
-      id: 1,
-      task: "Gluta LP",
-      status: "Pending",
-    },
-    {
-      id: 2,
-      task: "Nursing LP",
-      status: "Pending",
-    },
-    {
-      id: 3,
-      task: "IV Therapy LP",
-      status: "Done",
-    },
-    {
-      id: 4,
-      task: "NadIV Therapy LP",
-      status: "Working",
-    },
-  ];
-
   return (
     <>
       <div>

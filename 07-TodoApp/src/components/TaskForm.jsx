@@ -13,6 +13,7 @@ const TaskForm = ({ onAdd }) => {
     }
 
     onAdd(taskName);
+    setTaskName("");
   };
 
   return (

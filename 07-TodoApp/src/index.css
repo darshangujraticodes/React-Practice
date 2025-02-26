@@ -1,0 +1,61 @@
+body {
+  color: #f5f5f5;
+  background: #262626;
+}
+
+.submitBtn {
+  background-color: #75dafb;
+  color: #000;
+  border: none;
+  margin: 10px;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+}
+
+.inputText {
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.col1 {
+  width: 55px;
+}
+
+.col2 {
+  width: 75px;
+}
+
+.col3 {
+  width: 250px;
+}
+
+.col4 {
+  width: 90px;
+}
+
+.col5 {
+  width: 125px;
+}
+
+thead {
+  border-bottom: 1px solid #fff;
+  height: 50px;
+}
+
+.oprIcon {
+  margin: 0 10px;
+  width: 20px;
+  height: 20px;
+}
+
+tbody {
+  margin-top: 10px;
+  height: 50px;
+}
+
+td {
+  padding-top: 15px;
+}

@@ -1,42 +1,18 @@
 import React, { useState } from "react";
 
-const TaskForm = ({}) => {
-  const defaultData = [
-    {
-      id: 1,
-      task: "",
-      status: "Pending",
-    },
-  ];
-
-  const todo = [
-    {
-      id: 1,
-      task: "Gluta LP",
-      status: "Pending",
-    },
-    {
-      id: 2,
-      task: "Nursing LP",
-      status: "Pending",
-    },
-    {
-      id: 3,
-      task: "IV Therapy LP",
-      status: "Done",
-    },
-    {
-      id: 4,
-      task: "NadIV Therapy LP",
-      status: "Working",
-    },
-  ];
-
+const TaskForm = ({ onAdd }) => {
   const [taskName, setTaskName] = useState("");
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
     console.log(taskName);
+
+    if (!taskName) {
+      alert("Enter Valid Task Name");
+      return;
+    }
+
+    onAdd(taskName);
   };
 
   return (

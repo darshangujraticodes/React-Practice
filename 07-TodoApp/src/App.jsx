@@ -3,7 +3,20 @@ import Task from "./components/Task";
 import TaskForm from "./components/TaskForm";
 
 function App() {
-  const [todoData, setTodoData] = useState();
+  const [todoData, setTodoData] = useState([]);
+
+  const addTask = (name) => {
+    setTodoData((prev) => {
+      return [
+        ...prev,
+        {
+          id: todoData.length + 1,
+          task: name,
+          isComplete: false,
+        },
+      ];
+    });
+  };
 
   const todo = [
     {
@@ -32,8 +45,8 @@ function App() {
     <>
       <div>
         <h1></h1>
-        <TaskForm />
-        <Task todo={todo} />
+        <TaskForm onAdd={addTask} />
+        <Task todo={todoData} />
       </div>
     </>
   );

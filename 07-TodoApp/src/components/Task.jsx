@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { taskContext } from "../context/TaskContext";
 
-const Task = ({ todo }) => {
+const Task = () => {
+  const { todoData, setTodoData } = useContext(taskContext);
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const deleteHandle = (taskId) => {
+    const newData = todoData.filter((item) => item.id != taskId);
+    setTodoData(newData);
+  };
+
+  const checkedHandle = (event, taskId) => {
+    const checked = event.target.checked;
+
+    console.log(checked);
+    setIsChecked(checked);
+
+    // const updateData = todoData.map((item) =>
+    //   item.id === taskId ? { ...item, isComplete: !stateVal } : item
+    // );
+
+    // setTodoData(updateData);
+  };
+
   return (
     <div className="d-flex justify-content-center mt-3">
       <div>
@@ -15,7 +38,7 @@ const Task = ({ todo }) => {
             </tr>
           </thead>
           <tbody>
-            {todo?.map((item) => (
+            {todoData?.map((item) => (
               <tr key={item.id}>
                 <td>
                   <div>
@@ -24,14 +47,34 @@ const Task = ({ todo }) => {
                 </td>
                 <td>
                   <div className="d-flex justify-content-center">
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={(event) => checkedHandle(event, item.id)}
+                    />
                   </div>
                 </td>
-                <td>{item.task}</td>
+                <td>
+                  <p
+                    className={` taskTitle ${
+                      item.isComplete ? " taskDone " : " taskPending "
+                    }  `}
+                  >
+                    {item.task}
+                  </p>
+                </td>
                 <td className="  ">
                   <div className="d-flex justify-content-center">
-                    <i className="fa-regular fa-pen-to-square  oprIcon"></i>
-                    <i className="fa-solid fa-trash mx-3 oprIcon"></i>
+                    <button className="iconBtn">
+                      <i className="fa-regular fa-pen-to-square  oprIcon"></i>
+                    </button>
+
+                    <button
+                      onClick={() => deleteHandle(item.id)}
+                      className="iconBtn"
+                    >
+                      <i className="fa-solid fa-trash mx-3 oprIcon"></i>
+                    </button>
                   </div>
                 </td>
               </tr>

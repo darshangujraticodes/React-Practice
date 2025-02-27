@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { taskContext } from "../context/TaskContext";
 
-const TaskForm = ({ onAdd }) => {
+const TaskForm = ({ addTask }) => {
   const [taskName, setTaskName] = useState("");
+
+  const { todoData, setTodoData } = useContext(taskContext);
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
@@ -12,25 +15,37 @@ const TaskForm = ({ onAdd }) => {
       return;
     }
 
-    onAdd(taskName);
+    setTodoData((prev) => {
+      return [
+        ...prev,
+        {
+          id: todoData.length + 1,
+          task: taskName,
+          isComplete: false,
+          isEditing: false,
+        },
+      ];
+    });
+
     setTaskName("");
   };
 
   return (
     <>
       <div>
-        <h1 className="text-center mt-3">0/0 Task Complete</h1>
+        <h1 className="text-center mt-3">Get Things Done!</h1>
+        <p className="text-center">0/0 Task Completed</p>
 
         <div className="d-flex justify-content-center mt-3">
-          <form action="">
+          <form action="" onSubmit={onSubmitHandle}>
             <input
               type="text"
-              placeholder="Enter Task Name"
+              placeholder="Build Your Todays Task List"
               className="inputText"
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
             />
-            <button onClick={onSubmitHandle} className="submitBtn">
+            <button type="submit" className="submitBtn">
               +
             </button>
           </form>

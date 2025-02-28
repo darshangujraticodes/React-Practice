@@ -5,9 +5,13 @@ export const taskContext = createContext();
 const taskContextProvider = ({ children }) => {
   const [todoData, setTodoData] = useState([]);
 
+  const [showUpdateBox, setShowUpdateBox] = useState(false);
+
   const data = {
     todoData,
     setTodoData,
+    showUpdateBox,
+    setShowUpdateBox,
   };
 
   console.log("context = ", todoData);

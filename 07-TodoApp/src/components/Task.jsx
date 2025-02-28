@@ -3,12 +3,16 @@ import { taskContext } from "../context/TaskContext";
 import EditTaskForm from "./EditTaskForm";
 
 const Task = () => {
-  const { todoData, setTodoData, showUpdateBox, setShowUpdateBox } =
-    useContext(taskContext);
+  const {
+    todoData,
+    setTodoData,
+    showUpdateBox,
+    setShowUpdateBox,
+    checkedTask,
+    setCheckedTask,
+  } = useContext(taskContext);
 
   console.log("task page", todoData);
-
-  const [checkedTask, setCheckedTask] = useState([]);
 
   const [checkBoxID, setCheckBoxID] = useState(0);
 

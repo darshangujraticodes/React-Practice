@@ -1,12 +1,12 @@
 import React, { useContext, useId, useState } from "react";
 import { taskContext } from "../context/TaskContext";
 
-const TaskForm = ({ addTask }) => {
+const TaskForm = () => {
   const [taskName, setTaskName] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Critical", "High", "Medium", "Low"];
 
-  const { setTodoData } = useContext(taskContext);
+  const { todoData, setTodoData, checkedTask } = useContext(taskContext);
 
   const selectPriorityHandle = (e) => {
     setSelectedOption(e.target.value);
@@ -46,7 +46,9 @@ const TaskForm = ({ addTask }) => {
     <>
       <div>
         <h1 className="text-center mt-3">Get Things Done!</h1>
-        <p className="text-center">0/0 Task Completed</p>
+        <p className="text-center">
+          {checkedTask.length} / {todoData.length} Task Completed
+        </p>
 
         <div className="d-flex justify-content-center mt-3">
           <form action="" onSubmit={onSubmitHandle}>

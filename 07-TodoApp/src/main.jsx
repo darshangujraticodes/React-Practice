@@ -5,9 +5,7 @@ import TaskContextProvider from "./context/TaskContext.jsx";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <TaskContextProvider>
-      <App />
-    </TaskContextProvider>
-  </StrictMode>
+  <TaskContextProvider>
+    <App />
+  </TaskContextProvider>
 );

@@ -14,7 +14,7 @@ const TaskForm = ({ addTask }) => {
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
-    console.log(taskName);
+    // console.log(taskName);
 
     if (!taskName) {
       alert("Enter Valid Task Name");

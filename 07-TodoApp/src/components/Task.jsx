@@ -6,6 +6,8 @@ const Task = () => {
   const { todoData, setTodoData, showUpdateBox, setShowUpdateBox } =
     useContext(taskContext);
 
+  console.log("task page", todoData);
+
   const [checkedTask, setCheckedTask] = useState([]);
 
   const [checkBoxID, setCheckBoxID] = useState(0);

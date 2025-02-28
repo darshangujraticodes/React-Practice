@@ -14,7 +14,21 @@ const taskContextProvider = ({ children }) => {
     setShowUpdateBox,
   };
 
-  console.log("context = ", todoData);
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("todoTaskData"));
+
+    // console.log("fetch localstorage data = ", data);
+
+    if (data && data.length > 0) setTodoData(data);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todoTaskData", JSON.stringify(todoData));
+  }, [todoData]);
+
+  // console.log("context = ", todoData);
+
+  // console.log(todoData);
 
   return <taskContext.Provider value={data}>{children}</taskContext.Provider>;
 };

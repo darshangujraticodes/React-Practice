@@ -168,7 +168,7 @@ const Task = () => {
                 <td className="  ">
                   <div className="d-flex justify-content-center">
                     <button
-                      disabled={`${item.isComplete ? " true " : " false "}`}
+                      disabled={item.isComplete}
                       onClick={() => editHandle(item.id)}
                       className={`iconBtn ${
                         item.isComplete ? " statustaskDone " : " taskPending "

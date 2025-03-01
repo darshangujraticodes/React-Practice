@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { taskContext } from "../context/TaskContext";
+import { toast } from "react-toastify";
 
 const EditTaskForm = ({ editTaskId }) => {
   const [editTaskName, setEditTaskName] = useState("");
@@ -49,6 +50,8 @@ const EditTaskForm = ({ editTaskId }) => {
     setTodoData(data);
 
     setShowUpdateBox(false);
+
+    toast.success("Task Updated!", {});
   };
 
   return (

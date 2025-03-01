@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { taskContext } from "../context/TaskContext";
 import EditTaskForm from "./EditTaskForm";
+import { toast } from "react-toastify";
 
 const Task = () => {
   const {
@@ -12,34 +13,11 @@ const Task = () => {
     setCheckedTask,
   } = useContext(taskContext);
 
-  console.log("task page", todoData);
+  // console.log("task page", todoData);
 
   const [checkBoxID, setCheckBoxID] = useState(0);
 
   const [editTaskId, setEditTaskId] = useState(0);
-
-  const deleteHandle = (taskId) => {
-    const newData = todoData.filter((item) => item.id != taskId);
-    setTodoData(newData);
-    setCheckedTask(checkedTask.filter((item) => item !== taskId));
-  };
-
-  const editHandle = (id) => {
-    setShowUpdateBox(true);
-
-    setEditTaskId(id);
-  };
-
-  const checkedHandle = (event, taskId) => {
-    const checked = event.target.checked;
-
-    setCheckBoxID(taskId);
-
-    if (checked) setCheckedTask([...checkedTask, taskId]);
-    else setCheckedTask(checkedTask.filter((item) => item !== taskId));
-
-    // console.log(checkedTask, checked, taskId);
-  };
 
   useEffect(() => {
     const taskId = checkBoxID;
@@ -60,9 +38,82 @@ const Task = () => {
     }
   }, [checkedTask]);
 
+  // delete handle opr
+  const deleteHandle = (taskId) => {
+    const newData = todoData.filter((item) => item.id != taskId);
+    setTodoData(newData);
+    setCheckedTask(checkedTask.filter((item) => item !== taskId));
+
+    toast.success("Task Deleted!", {});
+  };
+
+  // edit handle opr
+  const editHandle = (id) => {
+    setShowUpdateBox(true);
+
+    setEditTaskId(id);
+  };
+
+  // checkbox handle opr
+  const checkedHandle = (event, taskId) => {
+    const checked = event.target.checked;
+
+    setCheckBoxID(taskId);
+
+    if (checked) setCheckedTask([...checkedTask, taskId]);
+    else setCheckedTask(checkedTask.filter((item) => item !== taskId));
+
+    // console.log(checkedTask, checked, taskId);
+  };
+
+  const sortTaskHandle = () => {
+    // console.log(todoData);
+
+    const fetch1 = todoData.filter((item) => item.priority === "Critical");
+    const fetch2 = todoData.filter((item) => item.priority === "High");
+    const fetch3 = todoData.filter((item) => item.priority === "Medium");
+    const fetch4 = todoData.filter((item) => item.priority === "Low");
+
+    const newList = [...fetch1, ...fetch2, ...fetch3, ...fetch4];
+
+    setTodoData(newList);
+
+    // console.log(newList);
+  };
+
+  const deleteAllTodo = () => {
+    setCheckedTask([]);
+    setTodoData([]);
+
+    toast.success("New Todo List is created!", {});
+  };
+
+  const getPriorityClass = (status) => {
+    return status === "Critical"
+      ? "critical"
+      : status === "High"
+      ? "high"
+      : status === "Medium"
+      ? "medium"
+      : status === "Low"
+      ? "low"
+      : "low";
+  };
+
   return (
     <div className="d-flex justify-content-center mt-3">
       <div>
+        <div className="">
+          <div className="btnWrap">
+            <button onClick={sortTaskHandle} className="updateBtn">
+              Sort Task
+            </button>
+
+            <button onClick={deleteAllTodo} className="updateBtn">
+              New Todo
+            </button>
+          </div>
+        </div>
         <div>
           {showUpdateBox ? <EditTaskForm editTaskId={editTaskId} /> : null}
         </div>
@@ -104,13 +155,24 @@ const Task = () => {
                   </p>
                 </td>
                 <td>
-                  <p className="text-center mb-0">{item.priority}</p>
+                  <p
+                    className={` text-center priorityText mb-0 ${getPriorityClass(
+                      item.priority
+                    )}   taskTitle ${
+                      item.isComplete ? " statustaskDone " : " taskPending "
+                    }   `}
+                  >
+                    {item.priority}
+                  </p>
                 </td>
                 <td className="  ">
                   <div className="d-flex justify-content-center">
                     <button
+                      disabled={`${item.isComplete ? " true " : " false "}`}
                       onClick={() => editHandle(item.id)}
-                      className="iconBtn"
+                      className={`iconBtn ${
+                        item.isComplete ? " statustaskDone " : " taskPending "
+                      } `}
                     >
                       <i className="fa-regular fa-pen-to-square  oprIcon"></i>
                     </button>

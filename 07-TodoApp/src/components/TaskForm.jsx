@@ -1,5 +1,6 @@
 import React, { useContext, useId, useState } from "react";
 import { taskContext } from "../context/TaskContext";
+import { toast } from "react-toastify";
 
 const TaskForm = () => {
   const [taskName, setTaskName] = useState("");
@@ -17,12 +18,16 @@ const TaskForm = () => {
     // console.log(taskName);
 
     if (!taskName) {
-      alert("Enter Valid Task Name");
+      toast.error("Enter Valid Task Name", {});
+
+      // alert("Enter Valid Task Name");
       return;
     }
 
     if (!selectedOption) {
-      alert("Select Task Priority");
+      toast.error("Select Task Priority", {});
+
+      // alert("Select Task Priority");
       return;
     }
 
@@ -37,6 +42,8 @@ const TaskForm = () => {
         },
       ];
     });
+
+    toast.success("Task Added in Todo List!", {});
 
     setTaskName("");
     setSelectedOption("");

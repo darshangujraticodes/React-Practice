@@ -77,6 +77,10 @@ td {
   opacity: 0.5;
 }
 
+.statustaskDone {
+  opacity: 0.5;
+}
+
 .taskPending {
   text-decoration: none;
   opacity: 1;
@@ -106,9 +110,27 @@ td {
   margin: 0 5px;
 }
 
-.critical {
-  background: red;
-  border-radius: 10px;
-  font-size: 20px;
+.priorityText {
+  border-radius: 8px;
+  font-size: 18px;
   color: #fff;
+  padding: 3px 5px;
+  font-weight: 500;
+}
+
+.critical {
+  background-color: #ce4141;
+}
+
+.high {
+  /* background-color: #008577; */
+  background-color: #ce7b05;
+  /* background-color: #eca027; */
+}
+
+.medium {
+  background-color: #6442ac;
+}
+.low {
+  background-color: gray;
 }
